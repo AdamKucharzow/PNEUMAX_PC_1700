@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNEUMAX_PC_1700_Driver", "PNEUMAX_PC_1700\PNEUMAX_PC_1700_Driver.csproj", "{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNEUMAX_PC_1700.Tests.Unit", "PNEUMAX_PC_1700.Tests.Unit\PNEUMAX_PC_1700.Tests.Unit.csproj", "{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}.Debug|x86.ActiveCfg = Debug|x86
+		{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}.Debug|x86.Build.0 = Debug|x86
+		{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}.Release|Any CPU.ActiveCfg = Release|x86
+		{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}.Release|Mixed Platforms.Build.0 = Release|x86
+		{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}.Release|x86.ActiveCfg = Release|x86
+		{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}.Release|x86.Build.0 = Release|x86
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Debug|x86.Build.0 = Debug|Any CPU
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Release|x86.ActiveCfg = Release|Any CPU
+		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FF63E3C-A180-493D-973B-46B4589835DB}
+	EndGlobalSection
+EndGlobal
