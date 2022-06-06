@@ -1,7 +1,6 @@
-﻿
-namespace TL.PMEUMAX_PC_1700.Driver.Enums
+﻿namespace TL.Pneumax_PC_1700.Driver.Enums
 {
-    internal enum PC_1700_OperatingCode : byte
+    internal enum OperatingCode : byte
     {
         /// <summary>
         /// Resets the regulator.

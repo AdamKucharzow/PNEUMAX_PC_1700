@@ -8,8 +8,8 @@
     <ProjectGuid>{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TL.PMEUMAX_PC_1700.Driver</RootNamespace>
-    <AssemblyName>TL.PMEUMAX_PC_1700.Driver</AssemblyName>
+    <RootNamespace>TL.Pneumax_PC_1700</RootNamespace>
+    <AssemblyName>TL.Pneumax_PC_1700</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -41,14 +41,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\Enums\AnalogInputValue.cs" />
+    <Compile Include="API\Enums\CurrentAnalogOutput.cs" />
+    <Compile Include="API\Enums\InterventionMode.cs" />
+    <Compile Include="API\Enums\ReferenceSource.cs" />
+    <Compile Include="API\Enums\UnitOfMeasurement.cs" />
+    <Compile Include="API\Enums\VoltageAnalogOutput.cs" />
+    <Compile Include="API\Interfaces.Public\ICommandResult.cs" />
+    <Compile Include="API\IPneumaxValidator.cs" />
+    <Compile Include="Driver\Enums\PasswordMode.cs" />
     <Compile Include="API\Pneumax_PC_1700.cs" />
-    <Compile Include="Driver\Enums\PC_1700_ReplyCode.cs" />
-    <Compile Include="Driver\Enums\PC_1700_OperatingCode.cs" />
-    <Compile Include="Driver\IMessage.cs" />
-    <Compile Include="Driver\ICommandSender.cs" />
-    <Compile Include="Driver\IPneumaxDriver.cs" />
-    <Compile Include="Driver\IResponse.cs" />
-    <Compile Include="API\PneumaxModel.cs" />
+    <Compile Include="API\Enums\ProtectionMode.cs" />
+    <Compile Include="Driver\Enums\PneumaxParameters.cs" />
+    <Compile Include="Driver\Enums\ReplyCode.cs" />
+    <Compile Include="Driver\Enums\OperatingCode.cs" />
+    <Compile Include="Driver\Interfaces\IPneumaxCommand.cs" />
+    <Compile Include="API\Interfaces.Public\ICommandSender.cs" />
+    <Compile Include="Driver\Interfaces\IPneumaxResponse.cs" />
+    <Compile Include="API\Enums\PneumaxModel.cs" />
+    <Compile Include="Driver\PneumaxCommand.cs" />
+    <Compile Include="Driver\PneumaxResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

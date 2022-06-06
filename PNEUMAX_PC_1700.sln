@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNEUMAX_PC_1700_Driver", "PNEUMAX_PC_1700\PNEUMAX_PC_1700_Driver.csproj", "{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNEUMAX_PC_1700_API", "PNEUMAX_PC_1700\PNEUMAX_PC_1700_API.csproj", "{138C6CEB-5EFF-4B7B-8CAB-5B5BA88E246F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNEUMAX_PC_1700.Tests.Unit", "PNEUMAX_PC_1700.Tests.Unit\PNEUMAX_PC_1700.Tests.Unit.csproj", "{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PNEUMAX_PC_1700.Tests.Unit", "PNEUMAX_PC_1700.Tests.Unit\PNEUMAX_PC_1700.Tests.Unit.csproj", "{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNEUMAX_PC_1700_DRIVER", "PNEUMAX_PC_1700_DRIVER\PNEUMAX_PC_1700_DRIVER.csproj", "{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,18 @@ Global
 		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Release|x86.ActiveCfg = Release|Any CPU
 		{D810A04F-BD5C-4C9F-B36F-7EFD71A3D2C7}.Release|x86.Build.0 = Release|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Debug|x86.Build.0 = Debug|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Release|x86.ActiveCfg = Release|Any CPU
+		{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

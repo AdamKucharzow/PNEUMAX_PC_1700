@@ -1,4 +1,4 @@
-﻿namespace TL.PMEUMAX_PC_1700.Driver.API
+﻿namespace TL.Pneumax_PC_1700.API.Enums
 {
     public enum PneumaxModel
     {

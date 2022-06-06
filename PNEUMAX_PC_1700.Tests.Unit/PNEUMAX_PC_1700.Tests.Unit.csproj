@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PNEUMAX_PC_1700\PNEUMAX_PC_1700_Driver.csproj" />
+    <ProjectReference Include="..\PNEUMAX_PC_1700\PNEUMAX_PC_1700_API.csproj" />
   </ItemGroup>
 
 </Project>
