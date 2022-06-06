@@ -1,9 +1,9 @@
-﻿using TL.Pneumax_PC_1700.Driver.Enums;
-using TL.Pneumax_PC_1700.Driver.Interfaces;
+﻿using PNEUMAX_PC_1700_DRIVER.Driver.Enums;
+using PNEUMAX_PC_1700_DRIVER.Driver.Interfaces;
 
-namespace TL.Pneumax_PC_1700.Driver
+namespace PNEUMAX_PC_1700_DRIVER.Driver
 {
-    class PneumaxCommand : IPneumaxCommand
+    internal class PneumaxCommand : IPneumaxCommand
     {
         public byte Header => throw new System.NotImplementedException();
 

@@ -1,4 +1,4 @@
-﻿namespace TL.Pneumax_PC_1700.Driver.Enums
+﻿namespace PNEUMAX_PC_1700_DRIVER.Driver.Enums
 {
     internal enum OperatingCode : byte
     {

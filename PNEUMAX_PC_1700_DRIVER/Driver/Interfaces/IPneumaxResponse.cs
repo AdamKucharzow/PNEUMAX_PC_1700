@@ -1,6 +1,7 @@
-﻿using TL.Pneumax_PC_1700.Driver.Enums;
+﻿
+using PNEUMAX_PC_1700_DRIVER.Driver.Enums;
 
-namespace TL.Pneumax_PC_1700.Interfaces
+namespace PNEUMAX_PC_1700_DRIVER.Driver.Interfaces
 {
     internal interface IPneumaxResponse
     {

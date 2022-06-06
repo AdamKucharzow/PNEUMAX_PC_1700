@@ -1,14 +1,13 @@
 ﻿using System;
 using TL.Pneumax_PC_1700.API.Enums;
 using TL.Pneumax_PC_1700.API.Interfaces.Public;
-using TL.Pneumax_PC_1700.Driver;
 
 namespace TL.Pneumax_PC_1700.API
 {
     public class Pneumax_PC_1700
     {
         private readonly PneumaxModel model;
-        private ICommandSender commandSender;
+        private IPneumax_PC_1700_Driver driver;
         private MaximumAllowableInputs maximumAllowableInputs;
         private int desiredPressure;
         private bool analogInputValue;
@@ -18,10 +17,10 @@ namespace TL.Pneumax_PC_1700.API
         private bool voltageAnalogOutput;
         private ProtectionMode protectionMode;
 
-        public Pneumax_PC_1700(PneumaxModel pneumaxModel, ICommandSender commandSender)
+        public Pneumax_PC_1700(PneumaxModel pneumaxModel, IPneumax_PC_1700_Driver driver)
         {
             this.model = pneumaxModel;
-            this.commandSender = commandSender;
+            this.driver = driver;
             this.CreateMaximumAllowableInputs(this.model);
         }
 
@@ -61,9 +60,6 @@ namespace TL.Pneumax_PC_1700.API
 
         public void SetInsensitivity()
         {
-            PneumaxCommand command = new PneumaxCommand();
-            
-            //this.commandSender.SendCommand()
         }
 
         public void SetAnalogInputValue(AnalogInputValue value)
@@ -105,6 +101,11 @@ namespace TL.Pneumax_PC_1700.API
         private struct MaximumAllowableInputs
         {
             public int MaximumPressure { get; set; }
+        }
+
+        public void SetProtectionMode(ProtectionMode value)
+        {
+            throw new NotImplementedException();
         }
     }
 }

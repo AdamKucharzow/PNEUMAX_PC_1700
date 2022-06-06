@@ -7,8 +7,8 @@
     <ProjectGuid>{4AA76DFA-D2F6-4901-A1B5-72738CD78D33}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TL.Pneumax_PC_1700</RootNamespace>
-    <AssemblyName>TL.Pneumax_PC_1700</AssemblyName>
+    <RootNamespace>TL.Pneumax_PC_1700.Driver</RootNamespace>
+    <AssemblyName>TL.Pneumax_PC_1700.Driver</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,15 +33,25 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Driver\Enums\OperatingCode.cs" />
+    <Compile Include="Driver\Enums\PasswordMode.cs" />
+    <Compile Include="Driver\Enums\PneumaxParameters.cs" />
+    <Compile Include="Driver\Enums\ReplyCode.cs" />
+    <Compile Include="Driver\Interfaces\IPneumaxCommand.cs" />
+    <Compile Include="Driver\Interfaces\IPneumaxResponse.cs" />
+    <Compile Include="Driver\PneumaxCommand.cs" />
+    <Compile Include="Driver\PneumaxResponse.cs" />
+    <Compile Include="Driver\Pneumax_PC_1700_Driver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PNEUMAX_PC_1700\PNEUMAX_PC_1700_API.csproj">
+      <Project>{138c6ceb-5eff-4b7b-8cab-5b5ba88e246f}</Project>
+      <Name>PNEUMAX_PC_1700_API</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

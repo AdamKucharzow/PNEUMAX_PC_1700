@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TL.Pneumax_PC_1700.Driver.Enums
+﻿namespace PNEUMAX_PC_1700_DRIVER.Driver.Enums
 {
     internal enum PneumaxParameters
     {

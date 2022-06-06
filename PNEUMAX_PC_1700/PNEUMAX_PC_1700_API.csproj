@@ -48,24 +48,16 @@
     <Compile Include="API\Enums\UnitOfMeasurement.cs" />
     <Compile Include="API\Enums\VoltageAnalogOutput.cs" />
     <Compile Include="API\Interfaces.Public\ICommandResult.cs" />
+    <Compile Include="API\Interfaces.Public\IPneumax_PC_1700_Driver.cs" />
     <Compile Include="API\IPneumaxValidator.cs" />
-    <Compile Include="Driver\Enums\PasswordMode.cs" />
     <Compile Include="API\Pneumax_PC_1700.cs" />
     <Compile Include="API\Enums\ProtectionMode.cs" />
-    <Compile Include="Driver\Enums\PneumaxParameters.cs" />
-    <Compile Include="Driver\Enums\ReplyCode.cs" />
-    <Compile Include="Driver\Enums\OperatingCode.cs" />
-    <Compile Include="Driver\Interfaces\IPneumaxCommand.cs" />
     <Compile Include="API\Interfaces.Public\ICommandSender.cs" />
-    <Compile Include="Driver\Interfaces\IPneumaxResponse.cs" />
     <Compile Include="API\Enums\PneumaxModel.cs" />
-    <Compile Include="Driver\PneumaxCommand.cs" />
-    <Compile Include="Driver\PneumaxResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

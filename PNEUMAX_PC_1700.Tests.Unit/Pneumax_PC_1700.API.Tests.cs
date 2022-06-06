@@ -14,8 +14,8 @@ namespace PNEUMAX_PC_1700.Tests.Unit
         [TestCase(PneumaxModel.Model_9_Bar, 901, false)]
         public void TestWhetherPressureHigherThanAllowedForModelCannotBeSet(PneumaxModel model, int value, bool expected)
         {
-            ICommandSender commandSender = Mock.Of<ICommandSender>();
-            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, commandSender);
+            IPneumax_PC_1700_Driver driver = Mock.Of<IPneumax_PC_1700_Driver>();
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver);
             
             bool isPressureSet = pneumax.TrySetPressure(value);
 
@@ -26,8 +26,8 @@ namespace PNEUMAX_PC_1700.Tests.Unit
         [TestCase(PneumaxModel.Model_1_Bar, 50, true)]
         public void TestWhetherDesiredPresureIsSetProperly(PneumaxModel model, int value, int expected)
         {
-            ICommandSender commandSender = Mock.Of<ICommandSender>();
-            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, commandSender);
+            IPneumax_PC_1700_Driver driver = Mock.Of<IPneumax_PC_1700_Driver>();
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver);
 
             pneumax.TrySetPressure(value);
 
@@ -38,8 +38,8 @@ namespace PNEUMAX_PC_1700.Tests.Unit
         [TestCase(PneumaxModel.Model_1_Bar, AnalogInputValue.UserSet, AnalogInputValue.UserSet)]
         public void TestWhetherAnalogInputValueIsSetProperly(PneumaxModel model, AnalogInputValue value, AnalogInputValue expected)
         {
-            ICommandSender commandSender = Mock.Of<ICommandSender>();
-            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, commandSender);
+            IPneumax_PC_1700_Driver driver = Mock.Of<IPneumax_PC_1700_Driver>();
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver);
 
             pneumax.SetAnalogInputValue(value);
 
@@ -50,8 +50,8 @@ namespace PNEUMAX_PC_1700.Tests.Unit
         [TestCase(PneumaxModel.Model_1_Bar, InterventionMode.AccurateMode, InterventionMode.AccurateMode)]
         public void TestWhetherInterventionModeIsSetProperly(PneumaxModel model, InterventionMode value, InterventionMode expected)
         {
-            ICommandSender commandSender = Mock.Of<ICommandSender>();
-            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, commandSender);
+            IPneumax_PC_1700_Driver driver = Mock.Of<IPneumax_PC_1700_Driver>();
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver);
 
             pneumax.SetInterventionMode(value);
 
@@ -62,8 +62,8 @@ namespace PNEUMAX_PC_1700.Tests.Unit
         [TestCase(PneumaxModel.Model_1_Bar, ReferenceSource.AnalogInput, ReferenceSource.AnalogInput)]
         public void TestWhetherReferenceSourceIsSetProperly(PneumaxModel model, ReferenceSource value, ReferenceSource expected)
         {
-            ICommandSender commandSender = Mock.Of<ICommandSender>();
-            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, commandSender);
+            IPneumax_PC_1700_Driver driver = Mock.Of<IPneumax_PC_1700_Driver>();
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver);
 
             pneumax.SetReferenceSource(value);
 
@@ -74,8 +74,8 @@ namespace PNEUMAX_PC_1700.Tests.Unit
         [TestCase(PneumaxModel.Model_1_Bar, UnitOfMeasurement.Bar, UnitOfMeasurement.Bar)]
         public void TestWhetherUnitOfMeasurementIsSetProperly(PneumaxModel model, UnitOfMeasurement value, UnitOfMeasurement expected)
         {
-            ICommandSender commandSender = Mock.Of<ICommandSender>();
-            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, commandSender);
+            IPneumax_PC_1700_Driver driver = Mock.Of<IPneumax_PC_1700_Driver>();
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver);
 
             pneumax.SetUnitOfMeasurement(value);
 
@@ -86,22 +86,25 @@ namespace PNEUMAX_PC_1700.Tests.Unit
         [TestCase(PneumaxModel.Model_1_Bar, VoltageAnalogOutput.V_0_10_Absolute, VoltageAnalogOutput.V_0_10_Absolute)]
         public void TestWhetherVoltageAnalogOutputIsSetProperly(PneumaxModel model, VoltageAnalogOutput value, VoltageAnalogOutput expected)
         {
-            ICommandSender commandSender = Mock.Of<ICommandSender>();
-            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, commandSender);
+            IPneumax_PC_1700_Driver driver = Mock.Of<IPneumax_PC_1700_Driver>();
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver);
 
             pneumax.SetVoltageAnalogOutput(value);
 
             Assert.That(pneumax.VoltageAnalogOutput, Is.EqualTo(expected));
         }
 
-        public void TestWhetherProtectionIsSetProperly(PneumaxModel model, ProtectionMode value, VoltageAnalogOutput expected)
+
+        [Test]
+        [TestCase(PneumaxModel.Model_1_Bar, ProtectionMode.Activated, ProtectionMode.Activated)]
+        public void TestWhetherProtectionIsSetProperly(PneumaxModel model, ProtectionMode value, ProtectionMode expected)
         {
-            ICommandSender commandSender = Mock.Of<ICommandSender>();
-            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, commandSender);
+            IPneumax_PC_1700_Driver driver = Mock.Of<IPneumax_PC_1700_Driver>();
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver);
 
-            var mode = pneumax.ProtectionMode;
+            pneumax.SetProtectionMode(value);
 
-            Assert.That(pneumax.VoltageAnalogOutput, Is.EqualTo(expected));
+            Assert.That(pneumax.ProtectionMode, Is.EqualTo(expected));
         }
     }
 }
