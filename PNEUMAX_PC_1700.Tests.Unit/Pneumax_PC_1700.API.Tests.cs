@@ -14,32 +14,69 @@ namespace PNEUMAX_PC_1700.Tests.Unit
         [TestCase(PneumaxModel.Model_9_Bar, 901, false)]
         public void TestWhetherPressureHigherThanAllowedForModelCannotBeSet(PneumaxModel model, int value, bool expected)
         {
-            IPneumax_PC_1700_Driver driver = Mock.Of<IPneumax_PC_1700_Driver>();
-            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver);
+            Mock<IPneumax_PC_1700_Driver> driver = new Mock<IPneumax_PC_1700_Driver>();
+            driver.Setup(x => x.SetPressure(value)).Returns(true);
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver.Object);
             
-            bool isPressureSet = pneumax.TrySetPressure(value);
+            bool isPressureSet = pneumax.SetPressure(value);
 
             Assert.That(isPressureSet, Is.EqualTo(expected));
         }
 
         [Test]
-        [TestCase(PneumaxModel.Model_1_Bar, 50, true)]
+        [TestCase(PneumaxModel.Model_1_Bar, 50, 50)]
         public void TestWhetherDesiredPresureIsSetProperly(PneumaxModel model, int value, int expected)
         {
-            IPneumax_PC_1700_Driver driver = Mock.Of<IPneumax_PC_1700_Driver>();
-            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver);
+            Mock<IPneumax_PC_1700_Driver> driver = new Mock<IPneumax_PC_1700_Driver>();
+            driver.Setup(x => x.SetPressure(value)).Returns(true);
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver.Object);
 
-            pneumax.TrySetPressure(value);
+            pneumax.SetPressure(value);
 
             Assert.That(pneumax.DesiredPresure, Is.EqualTo(expected));
+        }
+
+        [Test]
+        [TestCase(PneumaxModel.Model_1_Bar, 50)]
+        public void TestWhetherDesiredPresureReatainsAfterFailSetNewValue(PneumaxModel model, int value)
+        {
+            Mock<IPneumax_PC_1700_Driver> driver = new Mock<IPneumax_PC_1700_Driver>();
+            driver.Setup(x => x.SetPressure(value)).Returns(true);
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver.Object);
+
+            pneumax.SetPressure(value);
+            int oldValue = pneumax.DesiredPresure;
+
+            driver.Setup(x => x.SetPressure(value)).Returns(false);
+            pneumax.SetPressure(value);
+
+            Assert.That(pneumax.DesiredPresure, Is.EqualTo(oldValue));
+        }
+
+        [Test]
+        [TestCase(PneumaxModel.Model_1_Bar, 50)]
+        public void TestWhetherDesiredPresureIsNotSetWhenPreviousValueIsTheSameAsNew(PneumaxModel model, int value)
+        {
+            Mock<IPneumax_PC_1700_Driver> driver = new Mock<IPneumax_PC_1700_Driver>();
+            driver.Setup(x => x.SetPressure(value)).Returns(true);
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver.Object);
+
+            bool resultForFirstSet = pneumax.SetPressure(value);
+            bool resultForSecondSet = pneumax.SetPressure(value);
+
+            Assert.That(resultForFirstSet, Is.True);
+            Assert.That(resultForSecondSet, Is.False);
+
         }
 
         [Test]
         [TestCase(PneumaxModel.Model_1_Bar, AnalogInputValue.UserSet, AnalogInputValue.UserSet)]
         public void TestWhetherAnalogInputValueIsSetProperly(PneumaxModel model, AnalogInputValue value, AnalogInputValue expected)
         {
-            IPneumax_PC_1700_Driver driver = Mock.Of<IPneumax_PC_1700_Driver>();
-            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver);
+            Mock<IPneumax_PC_1700_Driver> driver = new Mock<IPneumax_PC_1700_Driver>();
+            driver.Setup(x => x.SetAnalogInputValue(value));
+
+            Pneumax_PC_1700 pneumax = new Pneumax_PC_1700(model, driver.Object);
 
             pneumax.SetAnalogInputValue(value);
 
@@ -57,6 +94,8 @@ namespace PNEUMAX_PC_1700.Tests.Unit
 
             Assert.That(pneumax.InterventionMode, Is.EqualTo(expected));
         }
+
+
 
         [Test]
         [TestCase(PneumaxModel.Model_1_Bar, ReferenceSource.AnalogInput, ReferenceSource.AnalogInput)]

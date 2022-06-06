@@ -46,7 +46,7 @@ namespace TL.Pneumax_PC_1700.API
 
         public bool AnalogInputValue => this.analogInputValue;
 
-        public object DesiredPresure => this.desiredPressure;
+        public int DesiredPresure => this.desiredPressure;
 
         public bool InterventionMode => this.interventionMode;
         
@@ -62,14 +62,14 @@ namespace TL.Pneumax_PC_1700.API
         {
         }
 
-        public void SetAnalogInputValue(AnalogInputValue value)
+        public bool SetAnalogInputValue(AnalogInputValue value)
         {
-            throw new NotImplementedException();
+            return this.driver.SetAnalogInputValue(value);
         }
 
-        public void SetInterventionMode(InterventionMode value)
+        public bool SetInterventionMode(InterventionMode value)
         {
-            throw new NotImplementedException();
+            return this.driver.SetInterventionMode(value);
         }
 
         public void SetReferenceSource(ReferenceSource value)
@@ -87,15 +87,21 @@ namespace TL.Pneumax_PC_1700.API
             throw new NotImplementedException();
         }
 
-        public bool TrySetPressure(int hundredthsofBar)
+        public bool SetPressure(int hundredthsOfBar)
         {            
-            if (this.maximumAllowableInputs.MaximumPressure < hundredthsofBar)
+            if (this.maximumAllowableInputs.MaximumPressure < hundredthsOfBar)
             {
                 return false;
             }
 
-            this.desiredPressure = hundredthsofBar;
-            return true;
+            if (this.desiredPressure == hundredthsOfBar)
+                return false;
+
+            bool result = this.driver.SetPressure(hundredthsOfBar);
+            if (result)
+                this.desiredPressure = hundredthsOfBar;
+            
+            return result;            
         }
 
         private struct MaximumAllowableInputs
