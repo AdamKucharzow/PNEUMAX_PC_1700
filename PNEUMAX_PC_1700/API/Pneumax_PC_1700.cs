@@ -10,11 +10,11 @@ namespace TL.Pneumax_PC_1700.API
         private IPneumax_PC_1700_Driver driver;
         private MaximumAllowableInputs maximumAllowableInputs;
         private int desiredPressure;
-        private bool analogInputValue;
-        private bool interventionMode;
-        private bool referenceSource;
-        private bool unitOfMeasurement;
-        private bool voltageAnalogOutput;
+        private AnalogInputValue analogInputValue;
+        private InterventionMode interventionMode;
+        private ReferenceSource referenceSource;
+        private UnitOfMeasurement unitOfMeasurement;
+        private VoltageAnalogOutput voltageAnalogOutput;
         private ProtectionMode protectionMode;
 
         public Pneumax_PC_1700(PneumaxModel pneumaxModel, IPneumax_PC_1700_Driver driver)
@@ -26,6 +26,7 @@ namespace TL.Pneumax_PC_1700.API
 
         private void CreateMaximumAllowableInputs(PneumaxModel model)
         {
+            //TODO: This should be changed to something more manaeable.
             switch (model)
             {
                 case PneumaxModel.Model_1_Bar:
@@ -44,17 +45,17 @@ namespace TL.Pneumax_PC_1700.API
 
         public PneumaxModel Model => model;
 
-        public bool AnalogInputValue => this.analogInputValue;
+        public AnalogInputValue AnalogInputValue => this.analogInputValue;
 
         public int DesiredPresure => this.desiredPressure;
 
-        public bool InterventionMode => this.interventionMode;
-        
-        public bool ReferenceSource => this.referenceSource;
+        public InterventionMode InterventionMode => this.interventionMode;
 
-        public bool UnitOfMeasurement => this.unitOfMeasurement;
+        public ReferenceSource ReferenceSource => this.referenceSource;
 
-        public bool VoltageAnalogOutput => this.voltageAnalogOutput;
+        public UnitOfMeasurement UnitOfMeasurement => this.unitOfMeasurement;
+
+        public VoltageAnalogOutput VoltageAnalogOutput => this.voltageAnalogOutput;
 
         public ProtectionMode ProtectionMode => this.protectionMode;
 
@@ -64,7 +65,14 @@ namespace TL.Pneumax_PC_1700.API
 
         public bool SetAnalogInputValue(AnalogInputValue value)
         {
-            return this.driver.SetAnalogInputValue(value);
+            if (Enum.IsDefined(typeof(AnalogInputValue), value) == false)
+                throw new NotSupportedException($"{typeof(AnalogInputValue).Name} '{value}' is not supported");
+            bool result = this.driver.SetAnalogInputValue(value);
+
+            if (result)
+                this.analogInputValue = value;
+
+            return result;
         }
 
         public bool SetInterventionMode(InterventionMode value)
@@ -88,8 +96,8 @@ namespace TL.Pneumax_PC_1700.API
         }
 
         public bool SetPressure(int hundredthsOfBar)
-        {            
-            if (this.maximumAllowableInputs.MaximumPressure < hundredthsOfBar)
+        {
+            if (this.maximumAllowableInputs.MaximumPressure < hundredthsOfBar || this.maximumAllowableInputs.MinimumPressure > hundredthsOfBar)
             {
                 return false;
             }
@@ -100,13 +108,20 @@ namespace TL.Pneumax_PC_1700.API
             bool result = this.driver.SetPressure(hundredthsOfBar);
             if (result)
                 this.desiredPressure = hundredthsOfBar;
-            
-            return result;            
+
+            return result;
         }
 
         private struct MaximumAllowableInputs
-        {
+        {            
             public int MaximumPressure { get; set; }
+
+            public int MinimumPressure { get; set; }
+
+            public void SetProtectionMode(ProtectionMode value)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public void SetProtectionMode(ProtectionMode value)
